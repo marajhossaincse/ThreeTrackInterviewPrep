@@ -87,3 +87,9 @@ Think of it like a real-world dictionary: the Key is the word, and the Value is 
 - **Unordered:** In standard HashMaps (like Java's HashMap or C++'s std::unordered_map), items are not stored in insertion order or sorted order.
 - **Fast Lookup vs. Space:** It trades memory for speed—allocating extra memory for array buckets to achieve $\mathcal{O}(1)$ time.
 
+## Important Things to Know About Java's HashMap
+
+- **Wrapper Classes Required:** You cannot use primitive types (`int`, `char`, `double`) directly as keys or values. You must use their object wrapper counterparts (`Integer`, `Character`, `Double`).
+- **Handling Nulls:** Java's HashMap allows one null key and multiple null values.
+- **Key Equality Requirements:** If you use custom class objects as keys, you must override both `hashCode()` and `equals()` so the map can properly calculate buckets and locate matching keys.
+- **Thread Safety:** Standard HashMap is not synchronized (not thread-safe). For concurrent/multi-threaded applications, you would use `java.util.concurrent.ConcurrentHashMap`.
