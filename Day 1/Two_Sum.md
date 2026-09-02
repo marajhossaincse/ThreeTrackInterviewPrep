@@ -25,12 +25,9 @@ public class Solution {
 
 ## Approach 2: Complement Search using Hash Map
 
-Your idea of subtracting the current number from the target (`complement = target - nums[i]`) is the exact key to solving this problem efficiently!
+The efficient way of solving this is by subtracting the current number from the target (`complement = target - nums[i]`)
 
-However, there are two subtle details to adjust in your original phrasing:
-
-- **The Math Term:** We say *complement* or *difference* rather than "module" (modulus is remainder after division).
-- **Lookup Efficiency:** Searching for the complement in a standard array linearly takes $\mathcal{O}(n)$ time, keeping total time at $\mathcal{O}(n^2)$. To make this fast ($\mathcal{O}(1)$ lookup), we use a Hash Map (`std::unordered_map` in C++) to store elements and their indices as we iterate.
+- **Lookup Efficiency:** To make this fast ($\mathcal{O}(1)$ lookup), we use a Hash Map to store elements and their indices as we iterate.
 
 ```java
 import java.util.HashMap;
@@ -93,3 +90,12 @@ Think of it like a real-world dictionary: the Key is the word, and the Value is 
 - **Handling Nulls:** Java's HashMap allows one null key and multiple null values.
 - **Key Equality Requirements:** If you use custom class objects as keys, you must override both `hashCode()` and `equals()` so the map can properly calculate buckets and locate matching keys.
 - **Thread Safety:** Standard HashMap is not synchronized (not thread-safe). For concurrent/multi-threaded applications, you would use `java.util.concurrent.ConcurrentHashMap`.
+
+## Core Operations & Complexity
+
+| Operation | Time Complexity (Average) | Description |
+| --- | --- | --- |
+| Put / Insert | $\mathcal{O}(1)$ | Adds a new key-value pair to the map |
+| Get / Lookup | $\mathcal{O}(1)$ | Retrieves the value associated with a key |
+| Contains Key | $\mathcal{O}(1)$ | Checks if a given key exists in the map |
+| Remove | $\mathcal{O}(1)$ | Deletes a key-value pair by key |
